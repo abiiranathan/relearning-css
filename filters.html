@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filters</title>
+
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem 2rem;
+      }
+
+      img:first-child {
+        filter: blur(5px);
+      }
+
+      img:nth-child(2) {
+        filter: sepia(75%);
+      }
+
+      img:nth-child(3) {
+        filter: grayscale(75%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./abiira.png" alt="" />
+      <img src="./abiira.png" alt="" />
+      <img src="./abiira.png" alt="" />
+    </div>
+  </body>
+</html>

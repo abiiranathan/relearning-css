@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using clip-path</title>
+
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: rebeccapurple;
+        clip-path: circle(50% at 0 0);
+        /* You can also specify the path like an svg and animate it
+        Use clip path generator website.
+        */
+        transition: all 1s ease-in-out;
+
+        &:hover {
+          clip-path: circle(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+</html>

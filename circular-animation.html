@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circular animation</title>
+
+    <style>
+      body {
+        max-width: 600px;
+        min-height: 100vh;
+        margin: auto;
+        display: grid;
+        place-items: center;
+      }
+
+      a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        aspect-ratio: 1;
+        font-size: 2rem;
+        text-decoration: none;
+        background-color: #373737;
+        border-radius: 50%;
+        transition: color 0.5s ease-in-out;
+        color: rgb(240, 193, 75);
+      }
+
+      a::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        inset: -3px;
+        border-radius: inherit;
+
+        background: conic-gradient(
+          rgb(240, 193, 75) var(--fill),
+          transparent var(--fill)
+        );
+        transition: --fill 0.6s ease-in-out;
+      }
+
+      @property --fill {
+        syntax: "<percentage>";
+        inherits: true;
+        initial-value: 0%;
+      }
+
+      a:hover {
+        color: rgb(240, 193, 75);
+        --fill: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="google.com">G</a>
+  </body>
+</html>

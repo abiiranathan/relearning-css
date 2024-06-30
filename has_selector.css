@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: 1rem auto;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+}
+
+form section {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 1em;
+  border-radius: 0.5rem;
+
+  input,
+  textarea {
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.4rem;
+    font-size: 1rem;
+    display: inline-block;
+    position: relative;
+  }
+
+  *[required] {
+    border-left: 6px coral solid;
+  }
+
+  *[required]:focus,
+  *[required]:not(:placeholder-shown) {
+    border-left: 1px solid #ccc;
+  }
+
+  *:invalid {
+    background-color: #fad4e8;
+  }
+}
+
+form:has(*:invalid) button[type="submit"] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+form:has(*:invalid)::after {
+  content: "* Form has some invalid or incomplete fields";
+  display: block;
+  color: rgb(232, 54, 9);
+  margin-top: 1rem;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fancy Borders</title>
+
+    <style>
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        max-width: 1000px;
+        margin: 1rem auto;
+        min-height: 70vh;
+        display: grid;
+        place-items: center;
+      }
+
+      .frame {
+        width: 300px;
+        height: 200px;
+        border: 34px solid;
+        text-transform: uppercase;
+        display: grid;
+        place-items: center;
+
+        /* Inner stroke */
+        outline: 3px solid #fff;
+        outline-offset: -28px;
+
+        /* Using border image */
+        /* border-image: linear-gradient(
+          45deg,
+          #000066 0%,
+          #57006b 11%,
+          #8a0067 22%,
+          #b8005f 33%,
+          #db0054 44%,
+          #f63741 56%,
+          #ff692e 67%,
+          #ff970f 78%,
+          #ffbf00 89%,
+          #ffea00 100%
+        );
+        border-image-slice: 1; */
+
+        /* Repeating linear gradient */
+        border-image: repeating-linear-gradient(
+            45deg,
+            #47d3ff,
+            #47d3ff 16px,
+            #474bff 16px,
+            #474bff 30px
+          )
+          40;
+
+        /* Repeating linear gradient */
+        border-image: repeating-conic-gradient(
+            from 45deg at 15% 15%,
+            #81315d 0 10deg,
+            #d82347 10deg 20deg,
+            #fd953b 20deg 30deg,
+            #fe672c 30deg 40deg,
+            #ff292c 40deg 50deg
+          )
+          9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSS Gradient Borders</h1>
+      <div class="frame">CSS is awesome</div>
+    </div>
+  </body>
+</html>

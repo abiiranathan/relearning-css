@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: 1rem auto;
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+}
+
+.pattern {
+  width: 800px;
+  height: 800px;
+  border: 2px solid #333;
+}
+
+.pattern-2 {
+  /* Conic-gradient */
+  /* background-image: conic-gradient(
+    #000 0% 25%,
+    #eee 25% 50%,
+    #000 50% 75%,
+    #eee 75% 100%
+  ); */
+  /* background-image: repeating-conic-gradient(#000 0% 25%, #eee 25% 50%); */
+
+  /* Or */
+  /* background-image: repeating-conic-gradient(
+    from 45deg,
+    #084c7f 0deg 90deg,
+    #eee 90deg 180deg
+  ); */
+
+  background-image: repeating-conic-gradient(
+    from 30deg,
+    #f67280 0deg 60deg,
+    #355c7d 60deg 120deg
+  );
+
+  /* Add to background size to achieve the checkerboard pattern */
+  background-size: 50px 90px;
+}
