@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header with Submenus</title>
+    <link rel="stylesheet" href="header.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">ABIIRA NATHAN</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="#">Services</a>
+            <ul class="submenu">
+              <li>
+                <a href="#">Web Design</a>
+                <ul class="submenu">
+                  <li><a href="#">Python Programming</a></li>
+                  <li><a href="#">Golang</a></li>
+                  <li>
+                    <a href="#">C/C++</a>
+                    <ul class="submenu">
+                      <li><a href="#">Introduction</a></li>
+                      <li><a href="#">Variables</a></li>
+                      <li><a href="#">Data Types</a></li>
+                      <li><a href="#">Loops</a></li>
+                      <li><a href="#">Functions</a></li>
+                      <li><a href="#">Pointers</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#">SEO</a></li>
+              <li><a href="#">Marketing</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 80 60"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="8"
+          stroke-linecap="round"
+        >
+          <line x1="10" y1="15" x2="70" y2="15" />
+          <line x1="10" y1="30" x2="70" y2="30" />
+          <line x1="10" y1="45" x2="70" y2="45" />
+        </svg>
+      </nav>
+    </header>
+
+    <script>
+      const menuItems = document.querySelectorAll("nav > ul > li");
+      menuItems.forEach(function (item) {
+        if (item.querySelector("ul.submenu")) {
+          item.addEventListener("mouseenter", function () {
+            const submenu = item.querySelector("ul.submenu");
+            if (submenu) {
+              positionSubmenus(submenu);
+            }
+          });
+        }
+      });
+
+      function positionSubmenus(parentSubmenu) {
+        const nestedSubmenus = parentSubmenu.querySelectorAll("ul.submenu");
+        nestedSubmenus.forEach(function (submenu) {
+          submenu.style.left = ""; // Reset styles
+          submenu.style.right = "";
+          submenu.style.top = "";
+          submenu.style.bottom = "";
+
+          const rect = submenu.getBoundingClientRect();
+          const parentRect = submenu.parentElement.getBoundingClientRect();
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+
+          // Position to the right by default
+          submenu.style.left = `${parentRect.width}px`;
+          submenu.style.right = "auto";
+          submenu.style.top = "0";
+
+          // Recalculate the rect after setting initial position
+          const newRect = submenu.getBoundingClientRect();
+
+          // If it overflows to the right, position to the left
+          if (newRect.right > windowWidth) {
+            submenu.style.left = "auto";
+            submenu.style.right = `${parentRect.width}px`;
+          }
+
+          // Adjust vertical position if overflowing the bottom edge
+          if (newRect.bottom > windowHeight) {
+            const overflowY = newRect.bottom - windowHeight;
+            submenu.style.top = `${-overflowY}px`;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

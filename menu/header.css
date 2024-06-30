@@ -1,0 +1,164 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  appearance: none;
+  padding: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-theme: false;
+  --header-dark: #fff;
+  --bg-color-muted: #777;
+  --color: rgb(59, 63, 86);
+  --hover-color: #555;
+  --link-highlight: goldenrod;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-dark: rgb(59, 63, 86);
+    --bg-color-muted: #555;
+    --color: #fff;
+    --hover-color: #e6e0e0;
+    --light-theme: true;
+  }
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  color: var(--color);
+  font-size: 1rem;
+}
+
+header {
+  background-color: var(--header-dark);
+  color: var(--color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--color);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul > li {
+  position: relative;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease;
+  padding: 0;
+  cursor: pointer;
+}
+
+nav li:hover,
+nav li:focus-within {
+  background-color: var(--hover-color);
+  border-radius: 5px;
+}
+
+nav li a {
+  color: var(--hover-color);
+  text-decoration: none;
+  display: block;
+  padding: 0.8rem 1.5rem;
+  transition: color 0.3s ease;
+  outline: none;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+nav li:hover a,
+nav li:focus-within a {
+  color: var(--link-highlight);
+}
+
+nav ul li ul.submenu {
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  background-color: var(--header-dark);
+  border-radius: 5px;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+}
+
+nav ul li:hover > ul.submenu,
+nav ul li:focus-within > ul.submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav ul.submenu li {
+  margin-right: 0;
+  padding: 0;
+  transition: none;
+}
+
+nav .submenu li:hover,
+nav .submenu li:focus-within {
+  border-radius: 0;
+}
+
+nav .submenu li:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+
+nav ul.submenu a {
+  display: block;
+  white-space: nowrap;
+  transition: none;
+  border-radius: 0;
+}
+
+nav .submenu a:hover,
+nav .submenu a:focus {
+  background-color: var(--hover-color);
+}
+
+nav ul > li:has(.submenu:focus-visible, :hover) {
+  background: transparent;
+  color: var(--link-highlight);
+}
+
+/* Add arrows to menu items with submenus */
+nav ul li:has(ul.submenu) > a::after {
+  content: "▼";
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+nav ul li ul.submenu li:has(ul.submenu) > a::after {
+  content: "►";
+  margin-left: 10px;
+}

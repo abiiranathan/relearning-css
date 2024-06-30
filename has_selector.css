@@ -51,3 +51,18 @@ form:has(*:invalid)::after {
   color: rgb(232, 54, 9);
   margin-top: 1rem;
 }
+
+/* Matches <a> elements that directly contain an <img> */
+a:has(> img) {
+  color: blue;
+}
+
+/* Matches <section> elements that don't contain any heading elements */
+section:not(:has(h1, h2, h3, h4, h5, h6)):last-of-type {
+  background-color: red;
+}
+
+/* Matches <h1> elements only if they have <p> elements directly following them */
+h1:has(+ p) {
+  font-size: 2rem;
+}
